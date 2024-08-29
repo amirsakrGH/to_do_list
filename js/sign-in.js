@@ -28,7 +28,7 @@ function signIn() {
       };
       localStorage.setItem("loggedUser", JSON.stringify(status));
       signinFailed.classList.replace("d-flex", "d-none");
-      window.open("./../index.html", "_self");
+      window.location.href = "../index.html";
       return;
     } else {
       signinFailed.classList.replace("d-none", "d-flex");

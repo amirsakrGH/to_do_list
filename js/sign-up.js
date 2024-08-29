@@ -43,7 +43,6 @@ function signUp() {
     };
     users.push(userInfo);
     localStorage.setItem("users", JSON.stringify(users));
-    // window.open("./../sign-in.html","_self");
     successModal.classList.replace("d-none","d-flex");
   } else {
     signUpBtn.nextElementSibling.innerHTML = '<i class="fa-solid fa-triangle-exclamation pe-2"></i>Please fill in all fields';
