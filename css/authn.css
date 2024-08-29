@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --main-black: #000;
+  --main-bullish-black: #3f3d56;
+  --main-red: #ee5b47;
+  --main-cyan: #02d8dc;
+}
+/* 
+:root {
+  --main-black: #000;
+  --main-bullish-black: #12182e;
+  --main-red: #fe3564;
+  --main-cyan: #02d8dc;
+} */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e4e0da;
+  min-height: 100svh;
+  font-family: "Poppins", sans-serif; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::selection {
+  color: #f1f1f1;
+  background-color: var(--main-bullish-black);
+}
+
+section .container {
+  background-color: #f4f1ec;
+}
+
+.form-control:focus {
+  color: var(--main-bullish-black);
+  border-color: var(--main-red);
+  outline: 0;
+  box-shadow: none;
+  background-color: #fff;
+}
+
+.btn-submit {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--main-red);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #d94e3c;
+}
+
+.btn-switch {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--main-bullish-black);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #333148;
+}
+
+.container p{
+  background-color: #d6282844;
+  color: #333148;
+}
+
+
+.sign-success,
+.signin-failed{
+  background-color: #3f3d5655;
+}
+
+
+
+@media only screen and (max-width: 997px) {
+  .welcome-img img{
+    width: 80%;
+  }
+  .sign-success .box,
+  .signin-failed .box{
+    max-width: 350px;
+  }
+}
+
+@media only screen and (max-width: 587px) {
+  .welcome-img img{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 998px) {
+  .welcome-img img{
+    width: 50%;
+  }
+  .sign-success .box,
+  .signin-failed .box{
+    max-width: 550px;
+  }
+}

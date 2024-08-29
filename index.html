@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <!-- ? ======>> Favicon -->
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <!-- ? ======>> Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+Syloti+Nagri&family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ? ======>> FontAwesome -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- ? ======>> BootStrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- ? ======>> Bootstrap Icons -->
+    <link rel="stylesheet" href="./css/bootstrap-icons.css" />
+    <!-- ? ======>> Main StyleSheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <script>
+      //URL guard
+      if (!localStorage.getItem("loggedUser")) {
+        location.href = "./sign-in.html";
+      }
+      // window.addEventListener("beforeunload", function () {
+      //   localStorage.removeItem("loggedUser");
+      // });
+    </script>
+  </head>
+
+  <body>
+    <header class="shadow-lg fixed-top">
+      <div class="container p-3 d-flex align-items-center g-3">
+        <h1 class="m-0 text-capitalize fw-bold h2 text-nowrap">
+          <a class="text-decoration-none" href="index.html"> Daily Task </a>
+        </h1>
+        <div class="input-group mx-auto flex-nowrap">
+          <label for="searchInput" class="input-group-text" id="addon-wrapping">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search-heart"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"
+              />
+              <path
+                d="M13 6.5a6.47 6.47 0 0 1-1.258 3.844q.06.044.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11"
+              />
+            </svg>
+          </label>
+          <input
+            id="searchInput"
+            placeholder="Seach Tasks...."
+            list="searchCategories"
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="addon-wrapping"
+          />
+          <datalist id="searchCategories">
+            <option value="Education"></option>
+            <option value="Health"></option>
+            <option value="Finance"></option>
+            <option value="productivity"></option>
+          </datalist>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <nav class="my-5">
+        <div
+          class="container d-flex align-items-center justify-content-between"
+        >
+          <h2 class="h5 m-0 fw-bold">
+            <i class="bi bi-stars"></i>
+            All of tasks
+          </h2>
+          <ul id="navbar" class="list-unstyled d-flex m-0 gap-3">
+            <ul class="list-unstyled d-flex layout rounded-3">
+              <li class="rounded-3">
+                <!-- active -->
+                <i class="bi bi-grid-1x2 active" id="gridBtn"></i>
+              </li>
+              <li class="rounded-3">
+                <i class="bi bi-list" id="barsBtn"></i>
+              </li>
+            </ul>
+            <li class="rounded-3">
+              <i class="bi bi-brightness-high-fill" id="mode"></i>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <button
+        id="newTask"
+        class="btn btn-add-task fw-semibold d-flex align-items-center mx-auto mb-5"
+      >
+        <i class="bi bi-file-earmark-plus fs-5 me-1"></i>
+        Add New Task
+      </button>
+
+      <div class="container tasks-grid pb-5">
+        <div id="tasksContainer" class="row g-3">
+          <div id="nextUp" class="Next-to-do status-s col-md-6 col-lg-4">
+            <div class="content">
+              <div
+                class="px-3 py-2 todo-header d-flex justify-content-between align-items-center"
+              >
+                <h2 class="text-capitalize m-0">Next up</h2>
+                <span id="nextUpCounter">0</span>
+              </div>
+              <div class="tasks p-3"></div>
+            </div>
+          </div>
+
+          <div id="inProgress" class="in-progress status-s col-md-6 col-lg-4">
+            <div class="content">
+              <div
+                class="px-3 py-2 todo-header d-flex justify-content-between align-items-center"
+              >
+                <h2 class="m-0 text-capitalize">In Progress</h2>
+                <span id="inProgressCounter">0</span>
+              </div>
+              <div class="tasks p-3"></div>
+            </div>
+          </div>
+
+          <div id="done" class="done status-s col-md-6 col-lg-4">
+            <div class="content">
+              <div
+                class="px-3 py-2 todo-header d-flex justify-content-between align-items-center"
+              >
+                <h2 class="m-0 text-capitalize">Done</h2>
+                <span id="doneCounter">0</span>
+              </div>
+              <div class="tasks p-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section
+      id="modal"
+      class="toDo-modal bg-opacity-75 d-none justify-content-center align-items-center bg-black position-absolute start-0 top-0 end-0 bottom-0"
+    >
+      <div class="container">
+        <!--! color picker -->
+        <div class="d-flex align-items-center gap-3 p-2">
+          <label for="bgColor">Background Color:</label>
+          <input
+            class="form-control form-control-color"
+            type="color"
+            id="bgColor"
+            value="#0d1117"
+          />
+          <label for="fnColor">Font Color:</label>
+          <input
+            class="form-control form-control-color"
+            type="color"
+            id="fnColor"
+            value="#a5a6a7"
+          />
+        </div>
+
+        <div class="form-floating">
+          <select
+            class="form-select mb-3"
+            id="status"
+            aria-label="Floating label select example"
+          >
+            <option value="nextUp" selected>Next Up</option>
+            <option value="inProgress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+          <label for="status">Select Task Status</label>
+        </div>
+
+        <div class="form-floating">
+          <select
+            class="form-select mb-3"
+            id="category"
+            aria-label="Floating label select example"
+          >
+            <option value="education" selected>Education</option>
+            <option value="health">Health & Fitness</option>
+            <option value="finance">Finance</option>
+            <option value="productivity">Productivity</option>
+          </select>
+          <label for="category">Select Category</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="name@example.com"
+          />
+          <label for="title">Task Title</label>
+        </div>
+
+        <p class="alert alert-danger d-none">
+          Title must be at least 5 and not exceed 50 characters long.
+        </p>
+
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            placeholder="Task Description"
+            id="description"
+          ></textarea>
+          <label for="description">Task Description</label>
+        </div>
+        <p class="alert alert-danger d-none">
+          Title must be at least 25 and not exceed 150 characters long.
+        </p>
+
+        <p class="text-end">
+          <span id="remainingCounter">100</span> remaining character
+        </p>
+
+        <button class="btn d-block btn-add-task w-100 fw-semibold" id="addBtn">
+          Add Task
+        </button>
+
+        <button class="btn d-none btn-primary w-100 fw-semibold" id="updateBtn">
+          Update Task
+        </button>
+        <p id="modalInvalid" class="alert alert-danger d-none">
+          "Please fill in all fields"
+        </p>
+      </div>
+    </section>
+
+    <div class="log-out">
+      <i class="bi bi-box-arrow-right"></i>
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>

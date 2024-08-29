@@ -1,0 +1,283 @@
+:root {
+  --main-black: #0d1117;
+  --sec-black: #161b22;
+  --finance-color: #30a277;
+  --health-color: #fb882e;
+  --productivity-color: #fc3637;
+  --education-color: #2e4acd;
+  --mid-gray: #474a4e;
+  --gray-color: #dadada;
+  --text-color: #a5a6a7;
+  --border-default-color: #2a2a2a;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-color);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: var(--main-black);
+  box-shadow: 0px 0px 4px 2px #282f38 inset;
+}
+
+::selection {
+  background-color: var(--gray-color);
+  color: var(--main-black);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--main-black);
+  color: var(--text-color);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Sans Syloti Nagri", sans-serif;
+}
+
+
+/* ? =============>> Header */
+header{
+  background-color: var(--sec-black);
+}
+
+header h1 {
+  cursor: pointer;
+  font-family: "Lobster", cursive;
+}
+
+header h1 a {
+  color: inherit;
+}
+
+.input-group {
+  width: 50%;
+}
+
+.input-group-text{
+  background-color: #fff;
+  border: none;
+}
+
+.form-control:focus {
+  border-color: #fff;
+  box-shadow: none;
+}
+
+
+/* ? =========>> Navbar */
+
+main{
+  padding-top: 70px;
+}
+
+nav .container {
+  padding-block: 7px;
+  border-top: 1px solid var(--border-default-color);
+  border-bottom: 1px solid var(--border-default-color);
+}
+
+nav ul .layout {
+  background-color: var(--sec-black);
+}
+
+nav ul li {
+  background-color: var(--sec-black);
+  font-size: 23px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li i {
+  cursor: pointer;
+  display: flex;
+  padding: 11px;
+  border-radius: inherit;
+  transition: background-color 350ms, scale 350ms;
+}
+
+nav ul li i:hover {
+  background-color: var(--mid-gray);
+}
+
+nav ul li i.active {
+  background-color: var(--mid-gray);
+  transform: scale(1.05);
+}
+
+
+
+.container.tasks-grid .content{
+  background-color: var(--sec-black);
+  border-radius: 8px;
+  border: 1px solid var(--border-default-color);
+}
+
+.todo-header {
+	background-color: var(--main-black);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.todo-header h2{
+  font-family: "Lobster", cursive;
+  font-size: 20px;
+}
+
+.todo-header span{
+  background-color: var(--sec-black);
+  padding-inline: 6px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+
+
+/* ? =======>> Btn rules */
+.btn-add-task {
+  --bs-btn-color: #222;
+  --bs-btn-bg: #ffcb42;
+  --bs-btn-hover-color: #222;
+  --bs-btn-hover-bg: #e0aa22;
+}
+
+
+
+.log-out{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  z-index: 999;
+  right: 30px;
+  bottom: 70px;
+  background-color: #02050b;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+
+.toDo-modal{
+  z-index: 9999;
+}
+
+
+
+/*? ========>> tasks grid */
+
+.tasks-grid .tasks .myTask {
+  padding: 16px;
+  border: 1px solid var(--border-default-color);
+  border-radius: 8px;
+  text-transform: capitalize;
+}
+
+
+.tasks-grid .tasks .myTask h3 {
+  font-size: 18px;
+}
+
+
+.tasks-grid .tasks .myTask h4{
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #f1f1f1;
+  width: fit-content;
+}
+/* list-unstyled d-flex gap-3 fs-5 m-0 */
+.tasks-grid .tasks .myTask ul{
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  font-size: 20px;
+  padding-left: 0;
+  margin: 0;
+}
+
+
+.tasks-grid .tasks .myTask:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.tasks-grid .tasks .myTask > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.tasks-grid .tasks .myTask ul i {
+  cursor: pointer;
+}
+
+
+
+.myTask:has(h4.education) h4 {
+  background-color: var(--education-color);
+}
+.myTask:has(h4.health) h4 {
+  background-color: var(--health-color);
+}
+.myTask:has(h4.finance) h4 {
+  background-color: var(--finance-color);
+}
+.myTask:has(h4.productivity) h4 {
+  background-color: var(--productivity-color);
+}
+
+
+textarea{
+  min-height: 150px;
+  max-height: 300px;
+}
+
+.myTask p,
+.myTask h3{
+  word-break: break-all;
+}
+
+
+
+
+/* data-view */
+
+
+.tasks[data-view="bars"] {
+  display: flex;
+  gap: 15px;
+  overflow: auto;
+}
+
+.tasks[data-view="bars"] .myTask {
+  min-width: 300px;
+  max-width: 300px;
+  margin: 0 !important;
+}
+
+
+
