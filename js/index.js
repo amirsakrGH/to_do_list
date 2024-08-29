@@ -331,7 +331,7 @@ function clearForm() {
 
 function logOut() {
   localStorage.removeItem("loggedUser");
-  window.location.href = "sign-in.html";
+  window.location.href = "https://amirsakrgh.github.io/to_do_list/sign-in.html";
 }
 
 // ? =========> change View
