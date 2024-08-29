@@ -251,9 +251,9 @@ nav ul li i.active {
 }
 
 
-textarea{
-  min-height: 150px;
-  max-height: 300px;
+textarea#description{
+  min-height: 100px;
+  max-height: 200px;
 }
 
 .myTask p,

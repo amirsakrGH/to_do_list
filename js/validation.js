@@ -8,12 +8,12 @@ export function validate(element, regex) {
   if (regex.test(element.value)) {
     element.classList.add("is-valid");
     element.classList.remove("is-invalid");
-    element.nextElementSibling.classList.add("invisible");
+    element.nextElementSibling.classList.add("d-none");
     return true;
   }else {
     element.classList.add("is-invalid");
     element.classList.remove("is-valid");
-    element.nextElementSibling.classList.remove("invisible");
+    element.nextElementSibling.classList.remove("d-none");
     return false;
   }
 }

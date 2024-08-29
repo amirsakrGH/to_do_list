@@ -219,15 +219,16 @@
             class="form-control"
             placeholder="Task Description"
             id="description"
+            maxlength="200"
           ></textarea>
           <label for="description">Task Description</label>
         </div>
         <p class="alert alert-danger d-none">
-          Title must be at least 25 and not exceed 150 characters long.
+          Title must be at least 25 and not exceed 200 characters long.
         </p>
 
         <p class="text-end">
-          <span id="remainingCounter">100</span> remaining character
+          <span id="remainingCounter">200</span> remaining character
         </p>
 
         <button class="btn d-block btn-add-task w-100 fw-semibold" id="addBtn">
@@ -237,9 +238,6 @@
         <button class="btn d-none btn-primary w-100 fw-semibold" id="updateBtn">
           Update Task
         </button>
-        <p id="modalInvalid" class="alert alert-danger d-none">
-          "Please fill in all fields"
-        </p>
       </div>
     </section>
 

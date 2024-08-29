@@ -28,7 +28,8 @@ function signIn() {
       };
       localStorage.setItem("loggedUser", JSON.stringify(status));
       signinFailed.classList.replace("d-flex", "d-none");
-      window.location.href = "https://amirsakrgh.github.io/to_do_list/index.html";
+      window.location.href =
+        "https://amirsakrgh.github.io/to_do_list/index.html";
       return;
     } else {
       signinFailed.classList.replace("d-none", "d-flex");

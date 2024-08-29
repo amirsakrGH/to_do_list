@@ -11,8 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+Syloti+Nagri&family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <!-- ? ======>> FontAwesome -->
-    <link rel="stylesheet" href="./css/all.min.css" />
     <!-- ? ======>> BootStrap -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <!-- ? ======>> Bootstrap Icons -->
@@ -22,14 +20,14 @@
   </head>
   <body>
     <section class=" py-5">
-      <div class="container p-5 rounded-4">
+      <div class="container p-sm-4 p-3 rounded-4">
         <div
           class="welcome-img d-flex justify-content-center align-items-center w-75 mx-auto"
         >
           <img class=" py-4" src="./images/welcome.svg" alt="" />
         </div>
-        <form class="w-75 mx-auto">
-          <div class="d-flex flex-column">
+        <form class="mx-auto">
+          <div class="d-flex flex-column gap-4">
             <div class="firstName w-100">
               <input
                 id="firstNameInput"
@@ -38,10 +36,12 @@
                 placeholder="First name"
                 aria-label="First name"
               />
-              <p class="m-0 mt-2 p-2 mb-2 rounded-2 invisible">
-                <i class="fa-solid fa-triangle-exclamation pe-2"></i>
-                First Name ................
-              </p>
+              <div class="m-0 warningx mt-2 p-2 mb-2 rounded-2 d-none">
+                <ul class="list-unstyled m-0 p-0">
+                  <li><i class="bi bi-clipboard-x"></i> The name must be between 5 and 25 characters long.</li>
+                  <li><i class="bi bi-clipboard-x"></i> Only letters (A-Z, a-z) and spaces are allowed.</li>
+                </ul>
+              </div>
             </div>
             <div class="lastName w-100">
               <input
@@ -51,14 +51,16 @@
                 aria-label="Last name"
                 id="lastNameInput"
               />
-              <p class="m-0 my-2 p-2 rounded-2 invisible">
-                <i class="fa-solid fa-triangle-exclamation pe-2"></i>
-                Last Name .................
-              </p>
+              <div class="m-0 warningx mt-2 p-2 mb-2 rounded-2 d-none">
+                <ul class="list-unstyled m-0 p-0">
+                  <li><i class="bi bi-clipboard-x"></i> The name must be between 5 and 25 characters long.</li>
+                  <li><i class="bi bi-clipboard-x"></i> Only letters (A-Z, a-z) and spaces are allowed.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div class="d-flex flex-md-row flex-column gap-3">
+          <div class="d-flex flex-md-row py-4 flex-column gap-3">
             <div class="email w-100">
                 <input
                   type="email"
@@ -66,10 +68,11 @@
                   class="form-control p-2"
                   id="emailInput"
                 />
-              <p class="m-0 mt-2 p-2 rounded-2 invisible">
-                <i class="fa-solid fa-triangle-exclamation pe-2"></i>
-                Invalid email address
-              </p>
+              <div class="m-0 warningx mt-2 p-2 mb-2 rounded-2 d-none">
+                <ul class="list-unstyled m-0 p-0">
+                  <li><i class="bi bi-clipboard-x"></i> Invalid email address</li>
+                </ul>
+              </div>
             </div>
             <div class="password w-100">
                 <input
@@ -79,21 +82,23 @@
                   class="form-control p-2"
                   id="passwordInput"
                 />
-              <p class="m-0 mt-2 p-2 rounded-2 invisible">
-                <i class="fa-solid fa-triangle-exclamation pe-2"></i>
-                Password must contain at least 8 characters
-              </p>
+                <div class="m-0 warningx mt-2 p-2 mb-2 rounded-2 d-none">
+                  <ul class="list-unstyled m-0 p-0">
+                    <li><i class="bi bi-clipboard-x"></i> Password must be at least 8 characters long.</li>
+                    <li><i class="bi bi-clipboard-x"></i> Contain at least one digit , one uppercase and lowercase  letter.</li>
+                  </ul>
+                </div>
             </div>
           </div>
           
-          <div class="flex-column d-flex gap-4 py-4 w-sm-50 mx-auto">
+          <div class="flex-column d-flex gap-4 pb-4 w-sm-50 mx-auto">
             <button id="signUp" class="btn btn-submit" type="submit">
               Create New Account
             </button>
-            <p class=" form-invalid  m-0  mt-2 p-2 rounded-2 d-none">
-              <i class="fa-solid fa-triangle-exclamation pe-2"></i>
+            <div class="warningx form-invalid  m-0 p-2  rounded-2 d-none">
+              <i class="bi bi-clipboard-x"></i>
               "Please fill in all fields"
-            </p>
+            </div>
             <a class="btn btn-switch" type="button" href="./sign-in.html">
               Already Have Account ?
             </a>
@@ -101,6 +106,8 @@
         </form>
         <div></div>
       </div>
+
+
       <div
         class="sign-success d-none start-0 top-0 w-100 h-100 position-absolute d-flex align-items-center justify-content-center"
       >

@@ -62,7 +62,7 @@ section .container {
   --bs-btn-hover-bg: #333148;
 }
 
-.container p{
+.container div.warningx{
   background-color: #d6282844;
   color: #333148;
 }
@@ -83,11 +83,17 @@ section .container {
   .signin-failed .box{
     max-width: 350px;
   }
+  section  form{
+    max-width: 75%;
+  }
 }
 
 @media only screen and (max-width: 587px) {
   .welcome-img img{
     width: 100%;
+  }
+  section  form{
+    max-width: 100%;
   }
 }
 
@@ -98,5 +104,9 @@ section .container {
   .sign-success .box,
   .signin-failed .box{
     max-width: 550px;
+  }
+
+  section  form{
+    max-width: 75%;
   }
 }

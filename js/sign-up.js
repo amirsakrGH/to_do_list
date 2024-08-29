@@ -29,7 +29,7 @@ function signUp() {
   ) {
     if (checkExist) {
       signUpBtn.nextElementSibling.classList.replace("d-none", "d-block");
-      signUpBtn.nextElementSibling.innerHTML = '<i class="fa-solid fa-triangle-exclamation pe-2"></i> Email Aleardy Exist';
+      signUpBtn.nextElementSibling.innerHTML = '<i class="bi bi-clipboard-x"></i> Email Aleardy Exist';
       return;
     }
 
@@ -45,7 +45,7 @@ function signUp() {
     localStorage.setItem("users", JSON.stringify(users));
     successModal.classList.replace("d-none","d-flex");
   } else {
-    signUpBtn.nextElementSibling.innerHTML = '<i class="fa-solid fa-triangle-exclamation pe-2"></i>Please fill in all fields';
+    signUpBtn.nextElementSibling.innerHTML = '<i class="bi bi-clipboard-x"></i> Please fill in all fields';
     signUpBtn.nextElementSibling.classList.replace("d-none", "d-block");
   }
 }

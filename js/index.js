@@ -15,6 +15,8 @@ const tasksContainer = document.getElementById("tasksContainer");
 const tasks = document.querySelectorAll(".tasks");
 const sections = document.querySelectorAll(".status-s");
 
+const remainingCounter = document.getElementById("remainingCounter");
+
 // ? =========> HTML Buttons
 const newTaskBtn = document.getElementById("newTask");
 const addTaskBtn = document.getElementById("addBtn");
@@ -33,7 +35,7 @@ let currentUser = JSON.parse(localStorage.getItem("loggedUser")) || null;
 // ? =========> RegEx
 
 const titleRegEx = /^(?=.{5,50}$)[\w\s]+$/;
-const descriptionRegEx = /^(?=.{25,150}$)[\w\s]+$/;
+const descriptionRegEx = /^(?=.{25,200}$)[\w\s]+$/;
 
 const statusContainers = {
   nextUp: document.getElementById("nextUp"),
@@ -58,33 +60,31 @@ function hideModal() {
 
 function displayAllTasks() {
   document.querySelectorAll(".myTask").forEach((task) => task.remove());
-  
+
   if (currentUser.logged) {
-    let userTasks = tasksList.filter( (task) => task.userId == currentUser.email )
-    
+    let userTasks = tasksList.filter(
+      (task) => task.userId == currentUser.email
+    );
+
     userTasks.forEach((task) => {
       displayTask(task);
       console.log(task);
-      
     });
-  }else{
-    alert("display all fn ----- no users")
+  } else {
+    alert("display all fn ----- no users");
   }
-  
-  
-  
 }
 
 function addTask() {
   currentUser = JSON.parse(localStorage.getItem("loggedUser"));
-  
+
   if (
     validate(title, titleRegEx) &&
     validate(descriptionTextArea, descriptionRegEx)
   ) {
-    document
-      .getElementById("modalInvalid")
-      .classList.replace("d-block", "d-none");
+    // document
+    //   .getElementById("modalInvalid")
+    //   .classList.replace("d-block", "d-none");
 
     let task = {
       id: Date.now(),
@@ -97,16 +97,16 @@ function addTask() {
       fnColor: fnColorInput.value,
     };
 
-
     tasksList.push(task);
     displayTask(task);
     setToLocalStorage();
     hideModal();
-  } else {
-    document
-      .getElementById("modalInvalid")
-      .classList.replace("d-none", "d-block");
   }
+  // else {
+  //   document
+  //     .getElementById("modalInvalid")
+  //     .classList.replace("d-none", "d-block");
+  // }
 }
 
 function displayTask(task) {
@@ -248,8 +248,6 @@ const backgrounds = [
   "#404040",
   "#5BBCFF",
   "#F0F3FF",
-  
-  
 ];
 const fontColors = [
   "#FFFFFF",
@@ -432,6 +430,13 @@ title.addEventListener("input", function () {
 });
 descriptionTextArea.addEventListener("input", function () {
   validate(descriptionTextArea, descriptionRegEx);
+  const maxLength = 200;
+  const remaining = maxLength - descriptionTextArea.value.length;
+  remainingCounter.textContent = remaining;
+
 });
 
 logOutBtn.addEventListener("click", logOut);
+
+// document.addEventListener("DOMContentLoaded", function () {
+// });
