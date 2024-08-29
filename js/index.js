@@ -331,7 +331,7 @@ function clearForm() {
 
 function logOut() {
   localStorage.removeItem("loggedUser");
-  window.location.href = "../sign-in.html";
+  window.location.href = "sign-in.html";
 }
 
 // ? =========> change View
