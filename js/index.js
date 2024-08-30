@@ -68,7 +68,6 @@ function displayAllTasks() {
 
     userTasks.forEach((task) => {
       displayTask(task);
-      console.log(task);
     });
   } else {
     alert("display all fn ----- no users");
@@ -200,13 +199,18 @@ function searchForTask() {
   const term = searchInput.value.toLowerCase().trim();
 
   document.querySelectorAll(".myTask").forEach((task) => task.remove());
-  const filteredTasks = tasksList.filter((task) => {
-    return (
-      task.title.toLowerCase().includes(term) ||
-      task.category.toLowerCase().includes(term)
+  if (currentUser.logged) {
+    let userTasks = tasksList.filter(
+      (task) => task.userId == currentUser.email
     );
-  });
-  filteredTasks.forEach((task) => displayTask(task));
+    const filteredTasks = userTasks.filter((task) => {
+      return (
+        task.title.toLowerCase().includes(term) ||
+        task.category.toLowerCase().includes(term)
+      );
+    });
+    filteredTasks.forEach((task) => displayTask(task));
+  }
 }
 
 function getTaskInfo(taskId) {
@@ -433,7 +437,6 @@ descriptionTextArea.addEventListener("input", function () {
   const maxLength = 200;
   const remaining = maxLength - descriptionTextArea.value.length;
   remainingCounter.textContent = remaining;
-
 });
 
 logOutBtn.addEventListener("click", logOut);
